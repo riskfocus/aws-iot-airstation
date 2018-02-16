@@ -58,8 +58,8 @@ logger.setLevel(logging.INFO)
 def respond(err, res=None):
     return {
         'statusCode': '400' if err else '200',
-        # 'body': err.message if err else json.dumps(res),
-        'body': err.message if err else res,
+        'body': err.message if err else json.dumps(res),
+        # 'body': err.message if err else res,
         'headers': {
             'Content-Type': 'application/json',
         },
@@ -80,13 +80,18 @@ def lambda_handler(event, context):
     # return respond(None, "%s invoked %s in %s with the following text: %s" % (user, command, channel, command_text))
 
     airstation = airstation_data()
-    resp = "*Cloud Room*: {Temp:.1f}°C, CO2e: {eCO2} ppm, TVOC: {TVOC} ppb".format(**airstation)
+
+    resp = {
+        "response_type": "in_channel",
+        "text": "*Cloud Room*: {Temp:.1f}°C, CO2e: {eCO2} ppm, TVOC: {TVOC} ppb".format(**airstation),
+        "attachments": []
+    }
 
     if airstation['eCO2'] > 1000:
-        resp += "\nWe are running out of air!"
+        resp["attachments"].append({"text": "We are running out of air!"})
 
     if airstation['Temp'] > 25:
-        resp += "\nIt's too hot!"
+        resp["attachments"].append({"text": "It's too hot!"})
 
     return respond(None, resp)
 
