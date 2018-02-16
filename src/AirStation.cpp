@@ -8,6 +8,7 @@
 
 #include <ArduinoJson.h>
 
+#define MCP9808_CALIBRATION_OFFSET -2
 Adafruit_SGP30 sgp;
 Adafruit_MCP9808 tempsensor; // = Adafruit_MCP9808();
 
@@ -188,7 +189,7 @@ void loop() {
 
 #ifdef MCP9808
 	// Read and print out the temperature, then convert to *F
-	float c = tempsensor.readTempC();
+	float c = tempsensor.readTempC() + MCP9808_CALIBRATION_OFFSET;
 	float f = c * 9.0 / 5.0 + 32;
 	Serial.print("Temp: ");
 	Serial.print(c);

@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
+  <component name="CidrRootsConfiguration">
+    <sourceRoots>
+      <file path="$PROJECT_DIR$/src" />
+    </sourceRoots>
+    <libraryRoots>
+      <file path="$PROJECT_DIR$/lib" />
+      <file path="$PROJECT_DIR$/.piolibdeps" />
+    </libraryRoots>
+    <excludeRoots>
+      <file path="$PROJECT_DIR$/.pioenvs" />
+    </excludeRoots>
+  </component>
+  <component name="IdProvider" IDEtalkID="6560EC66777465225A5AF45A945C95E2" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_9" default="false" project-jdk-name="Python 2.7" project-jdk-type="Python SDK" />
 </project>
