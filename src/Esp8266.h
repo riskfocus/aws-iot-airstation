@@ -6,7 +6,7 @@
 #define AWS_IOT_AIRSTATION_ESP8266_H
 
 #include <FS.h>
-#include <ESP8266Wifi.h>
+#include <ESP8266WiFi.h>
 
 bool loadClientCerts(WiFiClientSecure espClient) {
     // IoT
